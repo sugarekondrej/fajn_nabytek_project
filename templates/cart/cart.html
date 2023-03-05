@@ -1,0 +1,133 @@
+{%load static%}
+{%load space%}
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header.css'%}">
+    <link rel="stylesheet" href="{%static 'css/cart.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category-listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="stylesheet" href="/static/img/bootstrap-icons-1.10.1/bootstrap-icons.css">
+    <script src="/static/js/bootstrap.min.js"></script>    
+
+    <title>Košík | FAJN Nábytek</title>
+</head>
+<body>
+<div id="page-wrap">
+    <header>
+        {%include 'partials/header.html'%}
+    </header>
+
+    <div class="cart-body">
+        <div class="cart-body-left">
+            <div class="cart-name">
+                <h1>Košík</h1>
+            </div>
+        {%for cart_item in cart_items %}
+        <div class="cart-info">
+            <div class="cart-card">
+                <div class="cart-img"><img src="{{cart_item.product.primary_img.url}}"></div>
+                <div class="cart-product">
+                    <div class="product-text">
+                        <h5>{{cart_item.product.name}}</h5>
+                        <p class="stock">Doba dodání: do {{cart_item.product.eta}} týdnů</p>
+                    </div>
+                    <div class="product-counter">
+                        <span><a href="{%url 'remove_cart' cart_item.product.id%}"><button class="count">-</button></a></span>
+                        <p>{{cart_item.quantity}}</p>
+                        <span><a href="{%url 'add_cart' cart_item.product.id%}"><button class="count">+</button></a></span>
+                    </div>
+                    <div class="product-price">
+                        <h5>{{cart_item.line_total|spaced_format}},- Kč</h5>
+                        <span><a href="{%url 'remove_product' cart_item.product.id%}"><button><i class="bi bi-x"></i></a></button></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="cart-body-right">
+        <div class="count-name">
+            <h1>Shrnutí a doprava</h1>
+        </div>
+        <div class="cart-count">
+            <div class="delivery">
+                <div class="delivery-name">
+                    <h6>Způsob dopravy</h6>
+                </div>
+                <div class="del">
+                <form action="" method="post">
+                {% csrf_token %}
+                    <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt1">Osobní odběr na prodejně <span class="delivery-price" style="color: green;">ZDARMA</span></label>
+                    <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt2">Doprava bez výnosu <span class="delivery-price">+ 1 299 Kč</span></label>
+                    <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt3">Doprava s výnosem <span class="delivery-price">+ 1 999 Kč</span></label>
+                </form>
+                </div>
+                <a><button class="delivery-button">Zvolit dopravu</button></a>
+                <div class="final-count">
+                    <h6>Souhrn</h6>
+                    <div class="row">
+                        <div class="col-md-5" style="text-align: left;">
+                            <p>Doprava: </p>
+                        </div>
+                        <div class="col-md-5" style="text-align: right;">
+                            <p>{{delivery_price}} Kč</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5" style="text-align: left;">
+                            <p>Košík: </p>
+                        </div>
+                        {% if total_count < 1 %}
+                        <div class="col-md-5" style="text-align: right;">
+                            <p>{{total_count}} Kč</p>
+                        </div>
+                        {%endif%}
+                        {% if total_count > 1%}
+                        <div class="col-md-5" style="text-align: right;">
+                            <p>{{total_count|spaced_format}} Kč</p>
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="row overall">
+                        <div class="col-md-5" class="" style="text-align: left;">
+                            <h5>Celkem: </h5>
+                         </div>
+                         {% if total_count > 1 %}
+                         <div class="col-md-5" style="text-align: right;">
+                            <h5>{{total|spaced_format}} Kč</h5>
+                        </div>
+                        {%endif%}
+                        {% if total_count < 1 %}
+                         <div class="col-md-5" style="text-align: right;">
+                            <h5>{{total}} Kč</h5>
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="checkout-btn-unchecked">
+                        <button>Zvolte způsob dopravy</button>
+                    </div>
+                    <div class="checkout-btn">
+                        <a href=https://fajn-nabytek.eu/pokladna><button>Přejít k pokladně</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        {%include 'partials/footer.html'%}
+    </footer>
+</div>
+</body>

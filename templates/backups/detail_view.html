@@ -1,0 +1,116 @@
+{%load static%}
+{%load space%}
+{%load humanize%}
+<!DOCTYPE html>
+<html lang="cz">
+    <head>
+        {%if listing%}
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{%static 'css/header.css'%}">
+        <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+        <link rel="stylesheet" href="{%static 'css/listing.css'%}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+        <script src="/static/js/bootstrap.min.js"></script>
+    
+        <title>{{listing.name}}</title>
+
+        {%endif%}
+    </head>
+<body>
+<header>
+    {%include 'partials/header.html'%}
+</header>
+<div class="single-body">
+    <div class="product-tabs">
+        <div class="product-att">
+            <div><h1 class="product-name">{{listing.name}}</h1></div>
+            <div><p class="short-desc">{{listing.short_description}}</p></div>         
+            <div class="product-cart-items">
+                {%if listing.eta == 1 %}
+                <div class="etap"><span class="eta">Dostupnost: </span><span class="eta1">SKLADEM</span></div>
+                {%endif%}
+                {%if listing.eta > 1 and listing.eta < 5 %}
+                <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-low">dodání do {{listing.eta}} týdnů</span></div>
+                {%endif%}
+                {%if listing.eta > 4 %}
+                <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-high">dodání do {{listing.eta}} týdnů</span></div>
+                {%endif%}
+                <div class="cena"><h2>{{listing.price|spaced_format}},- Kč</h2></div>
+                <div class="product-buttons">
+                    <a class="cart-button" href="{% url 'add_cart' listing.id %}"><button><i class="bi bi-bag-plus"></i>Přidat do košíku</button></a>
+                    <p class="financovani">Možnosti financování</p>
+                    <button class="splatky-hc"><i class="bi bi-calculator"></i>HOMECREDIT kalkulačka</button>
+                    <button class="splatky-essox"><i class="bi bi-calculator"></i>ESSOX kalkulačka</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-img">
+            <div class="main-img">
+                <img src="{{ listing.primary_img.url}}" alt="{{listing.primary_alt}}">
+            </div>
+            <div class="alt-imgs">
+                {%if listing.img1%}
+                <img src="{{listing.img1.url}}" alt="%img_alt">
+                {%endif%}
+                {%if listing.img2%}
+                <img src="{{listing.img2.url}}" alt="%img_alt">
+                {%endif%}
+                {%if listing.img3%}
+                <img src="{{listing.img3.url}}" alt="%img_alt">
+                {%endif%}
+                {%if listing.img4%}
+                <img src="{{listing.img4.url}}" alt="%img_alt">
+                {%endif%}
+            </div>
+        </div>
+        
+    </div>
+    <div class="after-tabs">
+        <div class="description-tab">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Popis produktu</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Hodnocení</button>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="product-desc">
+                        <h2>{{listing.name}}</h2>
+                        {{listing.long_description}}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div><p>{{listing.ean.brand_id}}-000{{listing.id}}/00{{listing.varianta.id}}</p></div>
+                    {% if listing.id > 9 %}
+                    <div><p>{{listing.ean.brand_id}}-00{{listing.id}}/00{{listing.varianta.id}}</p></div>
+                    {%endif%}
+                    {% if listing.id > 99 %}
+                    <div><p>{{listing.ean.brand_id}}-0{{listing.id}}/00{{listing.varianta.id}}</p></div>
+                    {%endif%}
+                </div>
+              </div>
+    <script>
+    var firstTabEl = document.querySelector('#navtab')
+    var firstTab = new bootstrap.Tab(firstTabEl)
+
+    firstTab.show()
+  </script>
+        </div>
+    </div> 
+</div>
+<footer>
+{%include 'partials/footer.html'%}
+</footer>
+</body> 
+</html>

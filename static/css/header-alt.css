@@ -1,0 +1,97 @@
+/* Head columns CSS */
+@font-face {
+    font-family: 'Rubik';
+    src:url("/static/font/Rubik-VariableFont_wght.ttf");
+    font-weight: 100 1000;
+}
+
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    font-family: 'Rubik', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+header {
+    background-color: #1b1818;
+}
+
+.row {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    --bs-gutter-x: 0;
+}
+
+
+.col-md-2 {
+    text-align: center;
+}
+
+.info_div {
+    display: flex;
+    padding: 0px 50px 0px 50px;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    color: white;
+    justify-content: center;
+}
+
+.info_div span {
+    padding-left: 50px;
+}
+
+.info_div span a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    
+}
+
+.info_div span a:hover {
+    color: rgb(220, 182, 13);
+}
+
+.info_div span i {
+    padding-right: 10px;
+}
+
+.mailtab {
+    padding-right: 100px;
+}
+
+
+.head:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.text_div {
+    vertical-align: middle;
+    color: white;
+}
+
+.text_div h2 {
+    font-style: italic;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 1680px) {
+    .info_div {
+        padding-left: 5px;
+        margin-top: 5px;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+}

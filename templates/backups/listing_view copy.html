@@ -1,0 +1,105 @@
+{%load static%}
+{%load space%}
+
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    {%if listings%}
+    {%for listing in listings%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header.css'%}">
+    <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+    <title>{{listing.category}}</title>
+    <!-- #sub_category = category in models -->
+    {%endfor%}
+    {%endif%}
+</head>
+
+<body>
+<header>
+    {%include 'partials/header.html'%}
+</header>
+{%if listings%}
+    {%for listing in listings%}
+    {% if forloop.revcounter < 2 %} 
+    <div class="cat-body">
+        <div class="category-header">
+            <div class="category-header-columns">
+                <div class="category-title">
+                    {%if listing.sub_category%}
+                    <h1>{{listing.sub_category}}</h1>
+                    {%else%}
+                    <h1>{{listing.category}}</h1>
+                    {%endif%}
+                </div>
+                <div class="category-sec-title">
+                    
+                    {{listing.long_description}}
+                </div>
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+        <div class="filters-column">
+            <div>
+                <h2>Filtry</h2>
+            </div>
+        </div>
+        <div class="product-listings">
+            {%for listing in listings%}
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="imgBx">
+            
+                        <a href="{{listing.get_url}}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+                    </div>
+            
+                    <div class="contentBx">
+            
+                        <h2>{{listing.name}}</h2>
+            
+                        <div class="sklad">
+                            {%if listing.eta == 1 %}
+                            <div class="etap"><span class="eta">Dostupnost: </span><span class="eta1">SKLADEM</span></div>
+                            {%endif%}
+                            {%if listing.eta > 1 and listing.eta < 5 %}
+                            <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-low">dodání do {{listing.eta}} týdnů</span></div>
+                            {%endif%}
+                            {%if listing.eta > 4 %}
+                            <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-high">dodání do {{listing.eta}} týdnů</span></div>
+                            {%endif%}
+                        </div>
+            
+                        <div class="price">
+                            <h3>Cena: </h3>
+                            <h3 class="price-num">{{listing.price|spaced_format}} Kč</h3>
+                        </div>
+                        <a href="{{listing.get_url}}">Zobrazit</a>
+                    </div>
+            
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+<footer>
+    {%include 'partials/footer.html'%}
+</footer>
+</body>
+</html>

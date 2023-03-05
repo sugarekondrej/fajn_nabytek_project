@@ -1,0 +1,199 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    font-family: 'Rubik', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    
+}
+
+.index-body {
+    min-height: 64vh;
+    margin-top: 100px;
+}
+
+
+ul {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+:root {
+	--card-height: 35vw;
+	--card-margin: 4vw;
+	--card-top-offset: 1em;
+	--numcards: 4;
+	--outline-width: 0px;
+}
+
+#cards {
+	padding-bottom: calc(var(--numcards) * var(--card-top-offset)); /* Make place at bottom, as items will slide to that position*/
+	margin-bottom: var(--card-margin); /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+}
+
+.card {
+	position: sticky;
+	top: 0;
+	padding-top: calc(var(--index) * var(--card-top-offset));
+    border: none;
+}
+
+@supports (animation-timeline: works) {
+
+	@scroll-timeline cards-element-scrolls-in-body {
+		source: selector(body);
+		scroll-offsets:
+			/* Start when the start edge touches the top of the scrollport */
+			selector(#cards) start 1,
+			/* End when the start edge touches the start of the scrollport */
+			selector(#cards) start 0
+		;
+		start: selector(#cards) start 1; /* Start when the start edge touches the top of the scrollport */
+		end: selector(#cards) start 0; /* End when the start edge touches the start of the scrollport */
+		time-range: 4s;
+	}
+
+	.card {
+		--index0: calc(var(--index) - 1); /* 0-based index */
+		--reverse-index: calc(var(--numcards) - var(--index0)); /* reverse index */
+		--reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
+	}
+	
+	.card__content {
+		transform-origin: 50% 0%;
+		will-change: transform;
+
+		--duration: calc(var(--reverse-index0) * 1s);
+		--delay: calc(var(--index0) * 1s);
+
+		animation: var(--duration) linear scale var(--delay) forwards;
+		animation-timeline: cards-element-scrolls-in-body;
+	}
+
+	@keyframes scale {
+		to {
+			transform:
+				scale(calc(
+					1.1
+					-
+					calc(0.1 * var(--reverse-index))
+				));
+		}
+	}
+}
+
+/** PAGE STYLING **/
+
+* { /* Poor Man's Reset */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+#cards {
+	list-style: none;
+	outline: calc(var(--outline-width) * 10) solid blue;
+	
+	display: grid;
+	grid-template-columns: 1fr;
+	/* grid-template-rows: repeat(var(--numcards), var(--card-height)); */
+	gap: var(--card-margin);
+}
+
+.card {
+	outline: var(--outline-width) solid hotpink;
+}
+
+.card__content {
+	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+	background: rgb(255, 255, 255);
+	color: rgb(10, 5, 7);
+	overflow: hidden;
+
+	display: grid;
+	grid-template-areas: "text img";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+
+	align-items: stretch;
+	outline: var(--outline-width) solid lime;
+}
+
+.card__content i { 
+ padding-left: 10px;
+}
+
+.card__content p {
+    font-size: 1.2rem;
+}
+
+.card__content > div {
+	grid-area: text;
+	width: 80%;
+	place-self: center;
+	text-align: left;
+
+	display: grid;
+	gap: 1em;
+	place-items: start;
+}
+
+.card__content > figure {
+	grid-area: img;
+	overflow: hidden;
+}
+
+.card__content > figure > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+    max-height: 650px;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 3.5em;
+	padding-top: 10px;
+}
+
+h2 {
+	font-weight: 300;
+	font-size: 2.5em;
+}
+
+p {
+	font-weight: 300;
+	line-height: 1.42;
+}
+
+.btn {
+	background: black;
+	color: rgb(255 255 255);
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px;
+    border-radius: 0;
+}
+
+.btn:hover {
+    color: black;
+	background-color: rgb(220, 182, 13);
+}
+
+figure {
+    margin: 0;
+}
+
+@media screen and (max-width: 540px){
+.card__content h1 {
+	font-size: 1.5rem;
+}
+.card__content p {
+	font-size: 1rem;
+}
+}

@@ -1,0 +1,118 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header-alt.css'%}">
+    <link rel="stylesheet" href="{%static 'css/dev.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{%static 'css/footer-alt.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="stylesheet" href="/static/img/bootstrap-icons-1.10.1/bootstrap-icons.css">
+    <script src="/static/js/bootstrap.min.js"></script>    
+
+    <title>Spotřebiče - FAJN Nábytek</title>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1RDWVE4DND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1RDWVE4DND');
+</script>
+
+</head>
+
+<body>
+    <header>
+        {%include 'partials/header-alt.html'%}
+    </header>
+
+<div class="index-body">
+    <div class="go-back">
+        <a href="https://fajn-nabytek.eu"><button><i class="bi bi-arrow-left"></i>Jít zpět</button></a>
+    </div>
+    <div class="big-wrap">
+        <div class="big-text-column">
+            <h2>V rámci kuchyní na míru jsme rozšířili také prodej a nabídku spotřebičů. Rozhodli jsme se jít nezvyklou cestou společně s partnery, kteří mají pro naše zákazníky výhody.</h2>
+        </div>
+    </div>
+    <div style="align-items: baseline;"class="wrap">
+        <div class="half-banner">
+            <div class="top-img">
+                <img src="/static/img/dev/spotrebice/concept.webp">
+            </div>
+            <div class="under-text">
+                <ul>
+                    <li><strong style="color: #DD4040;">Český dodavatel</strong></li>
+                    <li>Spotřebiče všech kategorií</li>
+                    <li>Oproti konkureci vlastní servisní středisko</li>
+                    <li>V nabídce také skvělé designové kousky, do kterých se zamilujete</li>
+                    <li><a href="https://my-concept.cz" target="_blank" rel="noopener noreferrer">Více informací zde</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="half-banner">
+            <div class="top-img">
+                <img src="/static/img/dev/spotrebice/teka.webp">
+            </div>
+            <div class="under-text">
+                <ul>
+                    <li>V západní evropě je tento <strong style="color: orangered;">španělsko</strong>-<strong style="color: orange;">německý</strong> dodavatel považován za spičku v oblasti elektra</li>
+                    <li>Kromě skvělých spotřebíčů TEKA nabízí také TOP dřezy a baterie prvotřídní kvality</li>
+                    <li>TEKA se vyznačuje svojí inovativností. Což pro Vás znamená skvělý výběr a stále nové a originální produkty</li>
+                    <li>V nabídce taktéž velmi nadčasové a designové kousky, o kterých naše kuchařky a kuchaři ještě nemají ani tušení!</li>
+                    <li><a href="https://www.teka.com/cs-cz/" target="_blank" rel="noopener noreferrer">Více informací zde</a></li>
+                </ul>
+            </div>
+        </div>   
+    </div>  
+    <div style="align-items: baseline;"class="wrap">
+        <div class="half-banner">
+            <div class="top-img">
+                <img src="/static/img/dev/spotrebice/lord-logo-1-1.webp">
+            </div>
+            <div class="under-text">
+                <ul>
+                    <li><strong style="color: orange;">Německý</strong> výrobce nadstandartní kvality</li>
+                    <li>Mimo pověstné kvality <strong style="color: orange;">LORD</strong> nabízí také příznivé ceny!</li>
+                    <li>Důležité je také zmínit, že na všechny své spotřebiče poskytuje plnou 5-ti letou záruku, a to už stojí za myšlenku nemyslíte?</li>
+                    <li><a href="https://www.lord.eu/" target="_blank" rel="noopener noreferrer">Více informací zde</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="half-banner">
+            <div class="top-img">
+                <img src="/static/img/dev/spotrebice/alveus.webp">
+            </div>
+            <div class="under-text">
+                <ul>
+                    <li>Dlouholetý <strong style="color: turquoise;">slovinský</strong> výrobce dřezů, baterií a doplňků které potřebuje každá kuchyně</li>
+                    <li>I zde v plné kvalitě najdete vše co chcete přizpůsobit svým možnostem a představám</li>
+                    <li><a href="https://alveus.cz/" target="_blank" rel="noopener noreferrer">Více informací zde</a></li>
+                </ul>
+            </div>
+        </div> 
+    </div>
+    <div style="padding-bottom: 10px;" class="big-wrap">
+        <div class="big-text-column">
+            <p><h2>A pro Vás opět bonus nakonec! <strong>Vše o 10% levněji než na stránkách výrobců.</strong></h2></p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    {%include 'partials/footer-alt.html'%}
+</footer>
+</body>
+
+</html>

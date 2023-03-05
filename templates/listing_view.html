@@ -1,0 +1,137 @@
+{%load static%}
+{%load space%}
+
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    {%if listings%}
+    {%for listing in listings%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header.css'%}">
+    <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/category-listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+    <title>{{listing.category}}</title>
+    <!-- #sub_category = category in models -->
+    {%endfor%}
+    {%endif%}
+</head>
+
+<body>
+<div id="page-wrap">
+    <header>
+        {%include 'partials/header.html'%}
+    </header>
+    <div class="cat-body">
+        <div class="category-header">
+            <div class="category-header-columns">
+                <div class="category-title">
+                    {%if category_filter%}
+                    <h1>{{category_filter.name}}</h1>
+                    {%else%}
+                    <h1>{{category.name}}</h1>
+                    {%endif%}
+                </div>
+                <div class="category-sec-title">
+                    {%if category_filter%}
+                    {{category_filter.description}}
+                    {%else%}
+                    {{category.description}}
+                    {%endif%}
+                </div>
+            </div>
+            <div class="cat-links">
+                {%for cat in sub_categories%}
+                <div class="category-card">
+                    <a href="{{cat.get_url2}}" class="card-link">
+                        <div class="cat-img">
+                            {%if cat.img%}
+                            <img src="{{cat.img.url}}" class="cat-img-img" alt="...">
+                            {%endif%}
+                        </div>
+                            <div class="cat-content">
+                            <h5 class="mt-0">{{cat.name}}</h5>
+                        </div>
+                    </a>
+                </div>
+                {%endfor%}
+                </div>
+             
+            </div>
+    <div class="listings-view">
+        <div class="row">
+        <div class="col-lg-2">
+            <div class="filters">
+                <h2>Filtry</h2>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div class="products-list">
+            <div class="product-box">
+                {%for listing in listings%}
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="imgBx">
+                        {%if listing.sub_category%}
+                        <a href="{{listing.get_url}}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+                        {%else%}
+                        <a href="{{listing.get_url_without}}"><img src="{{ listing.primary_img.url }}" alt={{listing.short_description}}></a>
+                        {%endif%}
+                    </div>
+            
+                    <div class="contentBx">
+            
+                        <h2>{{listing.name}}</h2>
+            
+                        <div class="sklad">
+                            {%if listing.eta == 1 %}
+                            <div class="etap"><span class="eta">Dostupnost: </span><span class="eta1">SKLADEM</span></div>
+                            {%endif%}
+                            {%if listing.eta > 1 and listing.eta < 5 %}
+                            <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-low">dodání do {{listing.eta}} týdnů</span></div>
+                            {%endif%}
+                            {%if listing.eta > 4 %}
+                            <div class="etap"><span class="eta">Dostupnost: </span><span class="eta-high">dodání do {{listing.eta}} týdnů</span></div>
+                            {%endif%}
+                        </div>
+            
+                        <div class="price">
+                            <h3>Cena: </h3>
+                            <h3 class="price-num">{{listing.price|spaced_format}} Kč</h3>
+                        </div>
+                        {%if listing.sub_category%}
+                        <a href="{{listing.get_url}}">Zobrazit</a>
+                        {%else%}
+                        <a href="{{listing.get_url_without}}">Zobrazit</a>
+                        {%endif%}
+            
+                </div>
+            </div>
+            </div>
+            {%endfor%}
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+<footer>
+    {%include 'partials/footer.html'%}
+</footer>
+</div>
+</body>
+</html>

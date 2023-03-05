@@ -1,0 +1,96 @@
+footer {
+    font-family: 'Rubik', sans-serif;
+    background-color: #DD4040;
+    bottom: 0;
+    clear: both;
+    width: 100%;
+    margin-top: 100px;
+    position: absolute;
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+}
+
+.odkaz-tab {
+    width: 33.3%;
+    color: white;
+    
+}
+
+.odkaz-tab span {
+    display:flex;
+    justify-content: center;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 1.2px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.odkaz-tab span a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    
+}
+
+.odkaz-tab a:hover {
+    color: black;
+}
+
+.trademark {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    font-size: 0.6rem;
+    font-weight: 400;
+    padding: 5px 0px 5px 0px;
+}
+
+.info-tab {
+    width: 16.65%;
+}
+
+.info-tab i {
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+.info-tab span {
+    display:flex;
+    justify-content: left;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 1.2px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    color: white;
+}
+
+.info-tab span a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    
+}
+
+.info-tab a:hover {
+    color: black;
+}
+
+@media screen and (max-width: 900px) {
+    .info-tab {
+        display: none;
+    }
+    .odkaz-tab {
+        width: 50%;
+    }
+}

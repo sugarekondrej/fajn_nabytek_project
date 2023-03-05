@@ -1,0 +1,120 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header-alt.css'%}">
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{%static 'css/footer-alt.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="stylesheet" href="/static/img/bootstrap-icons-1.10.1/bootstrap-icons.css">
+    <script src="/static/js/bootstrap.min.js"></script>    
+
+    <title>FAJN Nábytek</title>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1RDWVE4DND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1RDWVE4DND');
+</script>
+
+</head>
+
+<body>
+    <header>
+        {%include 'partials/header-alt.html'%}
+    </header>
+
+<div class="index-body">
+
+    <main>
+        <ul id="cards">
+            <li class="card" id="card_1">
+                <div class="card__content">
+                    <div>
+                        <h1>Kuchyně</h1>
+                        <p>Nabízíme kuchyně<strong> na míru </strong>té nejvyšší kvality. Své zákazníky si rádi hýčkáme,
+                             a proto máme nyní v nabídce kuchyně nejen<strong style="color:#DD4040"> české </strong>
+                             a<strong style="color:mediumblue"> slovenské</strong>, ale nově i <strong style="color:orange"> německé </strong> výroby!</p>
+                        <p><a href="https://fajn-nabytek.eu/dev-kuchyne" class="btn btn--accent">Zjistit více<i class="bi bi-arrow-right"></i></a></p>
+                    </div>
+                    <figure>
+                        <img src="/static/img/card1.webp" alt="FAJN Nábytek - levné kuchyně na míru">
+                    </figure>
+                </div>
+            </li>
+            <li class="card" id="card_2">
+                <div class="card__content">
+                    <div>
+                        <h1>Šatny, skříně a kanceláře</h1>
+                        <p>Skříně na míru dodáváme v ergonomii, jakou si vyberete. Jsou plnohodnotné, žádné rámy a regály s holou zdí vzadu.
+                             Co si zákazník vymyslí, to rádi uděláme.</p>
+                        <p><a href="https://fajn-nabytek.eu/dev-kancelare" class="btn btn--accent">Zjistit více<i class="bi bi-arrow-right"></i></a></p>
+                    </div>
+                    <figure>
+                        <img src="/static/img/card2.webp" alt="FAJN Nábytek - levné kanceláře a home office">
+                    </figure>
+                </div>
+            </li>
+            <li class="card" id="card_3">
+                <div class="card__content">
+                    <div>
+                        <h1>Kusový nábytek</h1>
+                        <p>Pro naše zákazníky máme také na výběr ze stovek produktů z naší stálé nabídky!</p>
+                        <p><a href="https://fajn-nabytek.eu/dev-nabytek" class="btn btn--accent">Zjistit více<i class="bi bi-arrow-right"></i></a></p>
+                    </div>
+                    <figure>
+                        <img src="/static/img/card3.webp" alt="FAJN Nábytek - levné sedací soupravy">
+                    </figure>
+                </div>
+            </li>
+            <li class="card" id="card_4">
+                <div class="card__content">
+                    <div>
+                        <h1>Spotřebiče a doplňky</h1>
+                        <p>Nabízíme široký výběr spotřebičů <strong style="color:#DD4040"> české </strong> společnosti <strong>CONCEPT</strong>
+                             a nově i španělsko-německého giganta <strong style="color:orangered">TEKA </strong>! Dále u nás najdete také kvalitní slovinské
+                            dřezy <strong>ALVEUS</strong> a německé spotřebiče <strong style="color:orange">LORD </strong>!</p>
+                        <p><a href="https://fajn-nabytek.eu/dev-spotrebice" class="btn btn--accent">Zjistit více<i class="bi bi-arrow-right"></i></a></p>
+                    </div>
+                    <figure>
+                        <img src="/static/img/card4.webp" alt="FAJN Nábytek - levné spotřebiče TECA & Concept">
+                    </figure>
+                </div>
+            </li>
+            <li class="card" id="card_5">
+                <div class="card__content">
+                    <div>
+                        <h1>Partnerské (developerské) projekty</h1>
+                        <p>Ukázka našich dosavadních návrhů, realizovaných projektů napříč celopu republikou.</p>
+                        <p><a href="https://fajn-nabytek.eu/developerske-projekty" class="btn btn--accent">Zjistit více<i class="bi bi-arrow-right"></i></a></p>
+                    </div>
+                    <figure>
+                        <img src="/static/img/card5.webp" alt="FAJN Nábytek - developerské projekty promyšlené do posledního detailu">
+                    </figure>
+                </div>
+            </li>
+        </ul>
+    </main>
+
+</div>
+
+
+<footer>
+    {%include 'partials/footer-alt.html'%}
+</footer>
+</body>
+
+</html>

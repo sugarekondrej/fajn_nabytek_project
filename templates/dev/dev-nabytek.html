@@ -1,0 +1,93 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header-alt.css'%}">
+    <link rel="stylesheet" href="{%static 'css/dev.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{%static 'css/footer-alt.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="stylesheet" href="/static/img/bootstrap-icons-1.10.1/bootstrap-icons.css">
+    <script src="/static/js/bootstrap.min.js"></script>    
+
+    <title>Kusový nábytek - FAJN Nábytek</title>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1RDWVE4DND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1RDWVE4DND');
+</script>
+
+</head>
+
+<body>
+    <header>
+        {%include 'partials/header-alt.html'%}
+    </header>
+
+<div class="index-body">
+    <div class="go-back">
+        <a href="https://fajn-nabytek.eu"><button><i class="bi bi-arrow-left"></i>Jít zpět</button></a>
+    </div>
+    <div class="wrap">
+        <div class="text-column">
+            <p><h2>Co najdete v naší nabídce?</h2></p>
+            <p>Zastupujeme jako značková prodejna jen renomované české a slovenské výrobce. V sekci zdravého spaní jsou to české matrace a postele POHODA, nebo slovenský výrobce MATERASSO. V sekci kusového interiéru je to kvalitní slovenský výrobce DECODOM a čalouněný nábytek u nás zastupují české LUMCO a FAGUS, či slovenské sedací soupravy KROŠLÁK a GKT. To, co nenajdete v našem e-shopu, neznamená, že Vám to nejsme schopni u našich partnerů zajistit.</p>
+            <div class="text-column-img">
+            <br><img src="/static/img/dev/nabytek/monza-plus-s-matracom-1920x1080-1-scaled.webp"><img src="/static/img/dev/nabytek/NATALIxL.webp"><img src="/static/img/dev/nabytek/provence.webp"><img src="/static/img/dev/nabytek/Iveta_ss.webp">
+            </div>
+        </div>
+        <div class="img-column">
+            <figure>
+                <img src="/static/img/dev/nabytek/sabrina-1920x1080-2-scaled.webp" alt="Čalouněný rám postele Sabrina - FAJN Nábytek" class="zoom">
+                <figcaption>Čalouněný rám postele Sabrina</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="big-wrap">
+        <div class="big-text-column">
+            <p><h2>A to nejlepší nakonec... <strong>LEPŠÍ CENU NIKDE NENAJDETE!</strong></h2></p>
+        </div>
+        <div class="big-img-column">
+            <figure>
+                <img src="/static/img/dev/nabytek/Manhattan_2.webp" alt="Obývací stěna Manhattan - FAJN Nábytek" class="zoom">
+                <figcaption>Obývací stěna Manhattan</figcaption>
+            </figure>
+            <figure>
+                <img src="/static/img/dev/nabytek/Laura_ss.webp" alt="Rohová sedací souprava Laura - FAJN Nábytek" class="zoom">
+                <figcaption>Rohová sedací souprava Laura</figcaption>
+            </figure>
+            <figure>
+                <img src="/static/img/dev/nabytek/provence.webp" alt="Ložnicový komplet Provence - FAJN Nábytek" class="zoom">
+                <figcaption>Ložnicový komplet Provence</figcaption>
+            </figure>
+            <figure>
+                <img src="/static/img/dev/nabytek/BOA.webp" alt="Obývací stěna BOA - FAJN Nábytek" class="zoom">
+                <figcaption>Obývací stěna BOA</figcaption>
+            </figure>
+            <figure>
+                <img src="/static/img/dev/nabytek/ESTERxL.webp" alt="Rohová sedací souprava Ester - FAJN Nábytek" class="zoom">
+                <figcaption>Rohová sedací souprava Ester</figcaption>
+            </figure>
+        </div> 
+    </div> 
+</div>
+
+<footer>
+    {%include 'partials/footer-alt.html'%}
+</footer>
+</body>
+
+</html>

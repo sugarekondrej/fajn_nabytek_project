@@ -1,0 +1,227 @@
+.single-body {
+    padding: 50px 50px 300px 50px;
+}
+
+.product-tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.product-img {
+    width: 60%;
+    padding-left: 150px;
+}
+
+.main-img {
+    width: 100%;
+}
+
+.main-img img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 500px;
+
+}
+
+.alt-imgs {
+    display: flex;
+    width: 50%; 
+}
+
+.alt-imgs img {
+    width: 50%;
+    max-width: 150px;
+    height: auto;
+    margin: auto;
+}
+    
+.product-att {
+    width: 40%;
+    text-align: center;
+    margin-left: 100px;
+}
+
+.product-name {
+    padding-bottom: 20px;
+}
+
+.short-desc {
+    font-style: italic;
+    padding-bottom: 50px;
+}
+
+.after-tabs {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.nav-tabs {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    
+    font-size: 1.1rem;
+}
+
+.nav-tabs button {
+    color: black;
+}
+
+.nav-tabs .nav-link:hover {
+    color: white;
+    background-color: black;
+}
+
+.nav-tabs .nav-link.active {
+    color: white;
+    background-color: black;
+}
+
+.product-desc {
+    padding-top: 50px;
+}
+
+.product-desc h2 {
+    padding-bottom: 30px;
+}
+
+.product-cart-items {
+    margin-top: 5%;
+    padding-top: 30px;
+    border-top: 1px solid rgba(128, 128, 128, 0.301);
+}
+
+.etap {
+    padding-bottom: 30px;
+}
+
+.eta {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 30px;
+}
+
+.eta1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: green;
+}
+
+.eta-low {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: rgb(247, 182, 60);
+}
+
+.eta-high {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: rgb(254, 53, 53);
+}
+
+.cena {
+    padding-bottom: 30px;
+}
+
+.product-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.product-buttons i {
+    padding-right: 10px;
+    font-size: 1.2rem;
+}
+
+.cart-button {
+    width: 100%;
+    padding: 2%;
+    margin: 5px;
+    color: white;
+    background-color: black;
+    border: none;
+    
+}
+
+.cart-button button {
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+.product-buttons a.cart-button:hover {
+    color: black;
+    background-color: white;
+}
+
+.product-buttons a.cart-button {
+    text-decoration: none;
+    color: white;
+}
+
+.splatky-hc {
+    font-size: 0.9rem;
+    width: 50%;
+    padding: 2%;
+    margin-left: 5px;
+    color: white;
+    background-color: rgb(233, 66, 66);
+    border: none;
+}
+
+.splatky-hc:hover {
+    color: rgb(233, 66, 66);
+    background-color: white;
+}
+
+.splatky-essox {
+    font-size: 0.9rem;
+    width: 45%;
+    padding: 2%;
+    margin-right: 5px;
+    border: none;
+    color: black;
+    background-color: white;
+}
+
+.splatky-essox:hover {
+    color: #DD4040;
+}
+
+.financovani {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid rgba(128, 128, 128, 0.301);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.301);
+}
+
+@media screen and (min-width: 768px) and (max-width: 999px) {
+    .product-att{
+        margin-left: 0;  
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .product-tabs {
+        flex-direction: column-reverse;
+    }
+    .product-att {
+        margin-top: 20px;
+        width: 100%;
+        margin-left: 0;
+    }
+    .product-img {
+        width: 100%;
+        padding-left: 0;
+    }
+}

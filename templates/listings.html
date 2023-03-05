@@ -1,0 +1,70 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="cz">
+
+
+<head>
+    {%if listings%}
+    {%for listing in listings%}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/header.css'%}">
+    <link rel="stylesheet" href="{%static 'css/footer.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/listings.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+    <title>{{listing.category}}</title>
+    <!-- #sub_category = category in models -->
+    {%endfor%}
+    {%endif%}
+</head>
+
+<body>
+<div id="page-wrap">
+<header>
+    {%include 'partials/header.html'%}
+</header>
+    {%if listings%}
+    {%for listing in listings%}
+    {% if forloop.revcounter < 2 %}
+    <div class="cat-body">
+        <div class="category-header">
+            <div class="category-header-columns">
+                <div class="category-title">
+                    <h1>{{listing.category}} {{listing.sub_category}}</h1>
+                </div>
+                <div class="category-sec-title">
+                    Postel je základním kamenem každé ložnice. Pohodlnost a komfort jsou podstatné, ale neméně důležitý
+                    je elegantní design. Velká ložná plocha zvyšuje pohodlí, vysoké nožky zase umožní snadný úklid.
+                </div>
+            </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
+        <div class="filters-column">
+            <div>
+                <h2>Filtry</h2>
+            </div>
+        </div>
+        <div class="product-listings">
+            {%if listings%}
+            {%for listing in listings%}
+            {%include 'container.html'%}
+            {%endfor%}
+            {%endif%}
+        </div>
+    </div>
+<footer>
+    {%include 'partials/footer.html'%}
+</footer>
+</div>
+</body>
+</html>
