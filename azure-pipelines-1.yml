@@ -1,0 +1,18 @@
+trigger:
+- main
+
+pool:
+  name: Default
+  vmImage: ubuntu-latest
+  environment: 'fajn_django_5787'
+
+steps:
+- script: Git push
+  displayName: 'Git push to server'
+
+- script: |
+   git checkout -b main
+   git add -A
+   git commit -m "deployment $(Build.BuildNumber)"
+   git push --set-upstream origin master
+  workingDirectory: /srv/app
