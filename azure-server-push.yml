@@ -4,7 +4,7 @@ trigger:
 pool:
   name: Default
   vmImage: ubuntu-latest
-  environment: 'fajn_django_5787'
+  environment: 'venv'
 
 steps:
 - script: Git push
