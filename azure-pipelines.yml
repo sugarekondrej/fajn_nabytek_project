@@ -3,19 +3,16 @@ trigger:
 jobs:
   - job: Job_1
     displayName: Copy files to app directory
-    timeoutInMinutes: 5
+    timeoutInMinutes: 2
     pool:
       vmImage: ubuntu-latest
     steps:
     - checkout: none
-      clean: true
-      fetchDepth: 1
-      fetchTags: true
     - task: SSH@0
       displayName: Run shell commands on remote machine
       inputs:
         sshEndpoint: rosti
-        commands: cd /srv/app;git pull
+        commands: cd /srv/app/;git pull
         readyTimeout: 10000
   - job: Job_2
     displayName: Restart app
@@ -24,9 +21,6 @@ jobs:
       vmImage: ubuntu-latest
     steps:
     - checkout: none
-      clean: true
-      fetchDepth: 1
-      fetchTags: true
     - task: SSH@0
       displayName: Run shell commands on remote machine
       inputs:
