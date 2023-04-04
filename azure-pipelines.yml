@@ -9,11 +9,13 @@ jobs:
   steps:
   - checkout: none
 
-  - script: cd /srv/app | git pull
-  displayName: 'Command Line Script'
+  - script: |
+     cd /srv/app
+     git pull
+    displayName: 'Git pull'
 
 - job: restart_app
   steps:
   - checkout: none
   - script: supervisorctl restart FAJN_Django
-    displayName: 'Command Line Script'
+    displayName: 'App restart'
