@@ -1,14 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
-# Command Line v2
-# Run a command line script using Bash on Linux and macOS and cmd.exe on Windows.
-- task: CmdLine@2
-  inputs:
-    script: echo git pull
-    workingDirectory: /srv/app
+pool:
+  name: Default
+
+jobs:
+- job: no_checkout
+  steps:
+  - checkout: none
+
+steps:
+- script: |
+   cd /srv/app
+   git pull
+   
+  displayName: 'Command Line Script'
+
+- script: |
+   supervisorctl restart FAJN_Django
+   
+  displayName: 'Command Line Script'
