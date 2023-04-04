@@ -14,7 +14,7 @@ jobs:
       displayName: Run shell commands on remote machine
       inputs:
         sshEndpoint: rosti
-        commands: cd /srv/app;pwd;git pull
+        commands: cd /srv;cd app;pwd;git pull
         readyTimeout: 10000
   - job: Job_2
     dependsOn: Job_1
