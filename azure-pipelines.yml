@@ -1,5 +1,7 @@
 trigger:
   - main
+variables:
+    AGENT_MIN_SECRET_LENGTH: 4
 jobs:
   - job: Job_1
     displayName: Copy files to app directory
