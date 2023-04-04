@@ -9,12 +9,12 @@ jobs:
     steps:
     - checkout: none
     - task: SSH@0
-      failOnStdErr: false
       displayName: Run shell commands on remote machine
       inputs:
         sshEndpoint: 'rosti'
         runOptions: 'inline'
         inline: 'cd /srv/app;git checkout main;git pull origin main'
+        failOnStdErr: false
         readyTimeout: '10000'
   - job: Job_2
     dependsOn: Job_1
