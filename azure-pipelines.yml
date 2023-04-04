@@ -9,6 +9,7 @@ jobs:
     steps:
     - checkout: none
     - task: SSH@0
+      failOnStdErr: false
       displayName: Run shell commands on remote machine
       inputs:
         sshEndpoint: 'rosti'
