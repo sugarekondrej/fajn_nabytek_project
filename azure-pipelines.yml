@@ -5,18 +5,15 @@ pool:
   name: Default
 
 jobs:
-- job: no_checkout
+- job: no_checkout_and_push_to_server
   steps:
   - checkout: none
 
-steps:
-- script: |
-   cd /srv/app
-   git pull
-   
+  - script: cd /srv/app | git pull
   displayName: 'Command Line Script'
 
-- script: |
-   supervisorctl restart FAJN_Django
-   
-  displayName: 'Command Line Script'
+- job: restart_app
+  steps:
+  - checkout: none
+  - script: supervisorctl restart FAJN_Django
+    displayName: 'Command Line Script'
