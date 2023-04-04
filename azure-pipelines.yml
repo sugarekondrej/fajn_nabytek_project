@@ -1,7 +1,5 @@
 trigger:
   - main
-variables:
-    AZP_IGNORE_SECRETS_SHORTER_THAN: 4
 jobs:
   - job: Job_1
     displayName: Copy files to app directory
@@ -14,7 +12,7 @@ jobs:
       displayName: Run shell commands on remote machine
       inputs:
         sshEndpoint: rosti
-        commands: source ~/.bashrc;azpull;git pull
+        commands: git pull
         readyTimeout: 10000
   - job: Job_2
     dependsOn: Job_1
