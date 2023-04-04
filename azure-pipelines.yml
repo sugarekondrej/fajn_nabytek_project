@@ -19,6 +19,7 @@ jobs:
         commands: cd /srv/app;pwd;git pull
         readyTimeout: 10000
   - job: Job_2
+    dependsOn: Job_1
     displayName: Restart app
     timeoutInMinutes: 1
     pool:
