@@ -1,13 +1,7 @@
-/srv/app/listings/__pycache__/
-/srv/app/listings/templatetags/__pycache__/
-/srv/app/logging.txt
-
-
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__
 *.py[cod]
 *$py.class
-listings/__pycache__/
 # C extensions
 *.so
 
