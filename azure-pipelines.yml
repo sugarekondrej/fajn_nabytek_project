@@ -13,7 +13,7 @@ jobs:
       inputs:
         sshEndpoint: 'rosti'
         runOptions: 'inline'
-        inline: 'cd /srv/app;git pull'
+        inline: 'cd /srv/app;pwd;git pull'
         readyTimeout: '10000'
   - job: Job_2
     dependsOn: Job_1
