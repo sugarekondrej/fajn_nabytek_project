@@ -14,7 +14,7 @@ jobs:
     - task: SSH@0
       displayName: Run shell commands on remote machine
       inputs:
-        sshEndpoint: 4bc91e23-178f-4a9a-ae02-6154f125c1b5
+        sshEndpoint: rosti
         commands: |
           cd /srv/app
           git pull
@@ -32,6 +32,6 @@ jobs:
     - task: SSH@0
       displayName: Run shell commands on remote machine
       inputs:
-        sshEndpoint: 4bc91e23-178f-4a9a-ae02-6154f125c1b5
+        sshEndpoint: rosti
         commands: supervisorctl restart FAJN_Django
         readyTimeout: 10000
