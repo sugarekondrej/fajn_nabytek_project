@@ -1,5 +1,9 @@
 trigger:
   - main
+
+variables:
+  system.debug: true
+
 jobs:
   - job: Job_1
     displayName: Copy files to app directory
