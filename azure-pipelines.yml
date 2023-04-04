@@ -1,38 +1,37 @@
 trigger:
 -main
 jobs:
-- job: Job_1
-  displayName: Copy files to app directory
-  timeoutInMinutes: 5
-  pool:
-    vmImage: ubuntu-latest
-  steps:
-  - checkout: none
-    clean: true
-    fetchDepth: 1
-    fetchTags: true
-  - task: SSH@0
-    displayName: Run shell commands on remote machine
-    inputs:
-      sshEndpoint: 4bc91e23-178f-4a9a-ae02-6154f125c1b5
-      commands: |
-        cd /srv/app
-        git pull
-      readyTimeout: 10000
-- job: Job_2
-  displayName: Restart app
-  timeoutInMinutes: 1
-  pool:
-    vmImage: ubuntu-latest
-  steps:
-  - checkout: none
-    clean: true
-    fetchDepth: 1
-    fetchTags: true
-  - task: SSH@0
-    displayName: Run shell commands on remote machine
-    inputs:
-      sshEndpoint: 4bc91e23-178f-4a9a-ae02-6154f125c1b5
-      commands: supervisorctl restart FAJN_Django
-      readyTimeout: 10000
-...
+  - job: Job_1
+    displayName: Copy files to app directory
+    timeoutInMinutes: 5
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - checkout: none
+      clean: true
+      fetchDepth: 1
+      fetchTags: true
+    - task: SSH@0
+      displayName: Run shell commands on remote machine
+      inputs:
+        sshEndpoint: 4bc91e23-178f-4a9a-ae02-6154f125c1b5
+        commands: |
+          cd /srv/app
+          git pull
+        readyTimeout: 10000
+  - job: Job_2
+    displayName: Restart app
+    timeoutInMinutes: 1
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - checkout: none
+      clean: true
+      fetchDepth: 1
+      fetchTags: true
+    - task: SSH@0
+      displayName: Run shell commands on remote machine
+      inputs:
+        sshEndpoint: 4bc91e23-178f-4a9a-ae02-6154f125c1b5
+        commands: supervisorctl restart FAJN_Django
+        readyTimeout: 10000
