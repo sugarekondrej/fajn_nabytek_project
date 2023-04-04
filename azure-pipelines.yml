@@ -7,14 +7,16 @@ pool:
 jobs:
 - job: no_checkout_and_push_to_server
   steps:
+  - checkout: none
   - script: |
      cd /srv/app
      git pull
     displayName: 'Git pull'
+    condition: always
 
 - job: restart_app
   steps:
+  - checkout: none
   - script: supervisorctl restart FAJN_Django
     displayName: 'App restart'
-
-checkout: none
+    condition: always
