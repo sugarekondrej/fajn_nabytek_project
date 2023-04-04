@@ -6,10 +6,9 @@
 trigger:
 - main
 
-pool:
-  name: Default
-  vmImage: ubuntu-latest
-
--task: CmdLine@2
+# Command Line v2
+# Run a command line script using Bash on Linux and macOS and cmd.exe on Windows.
+- task: CmdLine@2
   inputs:
     script: echo git pull
+    workingDirectory: /srv/app
