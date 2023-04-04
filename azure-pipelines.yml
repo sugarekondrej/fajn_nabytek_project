@@ -16,8 +16,8 @@ jobs:
       inputs:
         sshEndpoint: rosti
         commands: |
-          cd /srv/app
-          git pull
+          'cd /srv/app'
+          'git pull'
         readyTimeout: 10000
   - job: Job_2
     displayName: Restart app
