@@ -11,9 +11,12 @@ jobs:
     - task: SSH@0
       displayName: Run shell commands on remote machine
       inputs:
-        sshEndpoint: rosti
-        commands: git pull
-        readyTimeout: 10000
+        sshEndpoint: 'rosti'
+        runOptions: 'commands'
+        commands: |
+          cd /srv/app
+          git pull
+        readyTimeout: '10000'
   - job: Job_2
     dependsOn: Job_1
     displayName: Restart app
