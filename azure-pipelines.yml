@@ -8,7 +8,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
-  - checkout: self
+  - checkout: none
     clean: true
     fetchDepth: 1
     fetchTags: true
@@ -26,7 +26,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
-  - checkout: self
+  - checkout: none
     clean: true
     fetchDepth: 1
     fetchTags: true
