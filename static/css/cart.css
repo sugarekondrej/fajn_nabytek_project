@@ -320,6 +320,6 @@ html,body
     }
 }
 
-.delivery-name submit {
+.delivery-name input[type="submit"] {
     display: none;
 }
