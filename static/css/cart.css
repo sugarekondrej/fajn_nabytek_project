@@ -319,3 +319,7 @@ html,body
         justify-content: center;
     }
 }
+
+.delivery-name submit {
+    display: none;
+}
