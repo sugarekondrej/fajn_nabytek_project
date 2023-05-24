@@ -73,16 +73,26 @@
                         <div class="del">
                             <form action="" method="post">
                                 {% csrf_token %}
-                                <label class="delivery-type"><input type="radio" name="delivery_opt" value="opt1">Osobní
+                                <label class="delivery-type"><input type="radio" name="osobni" value="osobni">Osobní
                                     odběr na prodejně <span class="delivery-price"
                                         style="color: green;">ZDARMA</span></label>
-                                <label class="delivery-type"><input type="radio" name="delivery_opt"
+                                <label class="delivery-type"><input type="radio" name="delivery_one"
                                         value="opt2">Doprava bez výnosu <span class="delivery-price">+ 1 299
                                         Kč</span></label>
-                                <label class="delivery-type"><input type="radio" name="delivery_opt"
+                                <label class="delivery-type"><input type="radio" name="delivery_two"
                                         value="opt3">Doprava s výnosem <span class="delivery-price">+ 1 999
                                         Kč</span></label>
+                                {%if no_cart_items == True %}
+                                <a><button class="delivery-button" ondblclick="myalert()"><input type="submit">Zvolit
+                                        dopravu</button></a>
+                                <script>
+                                    function myalert() {
+                                        alert("No product selected");
+                                    }
+                                </script>
+                                {%else%}
                                 <a><button class="delivery-button"><input type="submit">Zvolit dopravu</button></a>
+                                {%endif%}
                             </form>
                         </div>
 
@@ -128,7 +138,11 @@
                         <button>Zvolte způsob dopravy</button>
                     </div>
                     <div class="checkout-btn">
+                        {%if nothing_selected == True %}
+                        <a href=https://fajn-nabytek.eu/pokladna><button disabled>Přejít k pokladně</button></a>
+                        {%else%}
                         <a href=https://fajn-nabytek.eu/pokladna><button>Přejít k pokladně</button></a>
+                        {%endif%}
                     </div>
                 </div>
             </div>
