@@ -134,13 +134,12 @@
                         </div>
                         {%endif%}
                     </div>
+                    {%if nothing_selected == True %}
                     <div class="checkout-btn-unchecked">
                         <button>Zvolte způsob dopravy</button>
                     </div>
+                    {%else%}
                     <div class="checkout-btn">
-                        {%if nothing_selected == True %}
-                        <a href=https://fajn-nabytek.eu/pokladna><button disabled>Přejít k pokladně</button></a>
-                        {%else%}
                         <a href=https://fajn-nabytek.eu/pokladna><button>Přejít k pokladně</button></a>
                         {%endif%}
                     </div>

@@ -175,12 +175,15 @@
                             </form>
                         </div>
                     </div>
+                    {%if delivery_opt !== True %}
                     <div class="checkout-btn-unchecked">
                         <a><button>Zvolte způsob platby</button></a>
                     </div>
+                    {%else%}
                     <div class="checkout-btn">
                         <a><button>Vytvořit objednávku</button></a>
                     </div>
+                    {%endif%}
                 </div>
             </div>
         </div>
