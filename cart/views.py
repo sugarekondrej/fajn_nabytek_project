@@ -22,7 +22,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
     nothing_selected = True
     no_cart_items = False
     if request.method == "POST":
-        delivery = request.POST.get("delivery_type", False)
+        delivery = request.POST.get("delivery_type", None)
 
         if delivery == "osobni":
             delivery_price = 0
