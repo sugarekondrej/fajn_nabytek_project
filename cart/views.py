@@ -31,7 +31,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         elif delivery == "opt3":
             delivery_price = 1999
 
-        if delivery == None:
+        if delivery_price > -1:
             nothing_selected = False
 
     # even_total = 0"
