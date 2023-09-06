@@ -58,7 +58,6 @@ def cart(request, total=0, quantity=0, cart_items=None):
         "delivery_price": delivery_price,
         "nothing_selected": nothing_selected,
         "no_cart_items": no_cart_items,
-        "delivery": delivery,
     }
     return render(request, "cart/cart.html", context)
 
