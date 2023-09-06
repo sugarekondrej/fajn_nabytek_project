@@ -27,13 +27,13 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
         if delivery == "osobni":
             delivery_price = 0
-            delivery_name = "Osobní odběr"
+            delivery_name = "Osobní odběr - "
         elif delivery == "opt2":
             delivery_price = 1299
-            delivery_name = "Bez výnosu"
+            delivery_name = "Bez výnosu - "
         elif delivery == "opt3":
             delivery_price = 1999
-            delivery_name = "S výnosem"
+            delivery_name = "S výnosem - "
 
         if delivery_price > -1:
             nothing_selected = False
