@@ -24,9 +24,9 @@
         <form method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
-            {{ form.username.label_tag }}<br />
+            <span>Uživatel:</span><br />
             {{ form.username }}<br />
-            {{ form.password.label_tag }}<br />
+            <span>Heslo:</span><br />
             {{ form.password }}<br />
             {{ form.token.label_tag }}<br />
             {{ form.token }}<br />
