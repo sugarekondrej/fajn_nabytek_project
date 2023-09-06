@@ -19,6 +19,7 @@ def _cart_id(request):
 
 def cart(request, total=0, quantity=0, cart_items=None):
     delivery_price = 0
+    delivery_name = ""
     nothing_selected = True
     no_cart_items = False
     if request.method == "POST":
