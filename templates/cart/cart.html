@@ -73,13 +73,14 @@
                         <div class="del">
                             <form action="" method="post">
                                 {% csrf_token %}
-                                <label class="delivery-type"><input type="radio" name="osobni" value="osobni">Osobní
+                                <label class="delivery-type"><input type="radio" name="delivery_type"
+                                        value="osobni">Osobní
                                     odběr na prodejně <span class="delivery-price"
                                         style="color: green;">ZDARMA</span></label>
-                                <label class="delivery-type"><input type="radio" name="delivery_one"
+                                <label class="delivery-type"><input type="radio" name="delivery_type"
                                         value="opt2">Doprava bez výnosu <span class="delivery-price">+ 1 299
                                         Kč</span></label>
-                                <label class="delivery-type"><input type="radio" name="delivery_two"
+                                <label class="delivery-type"><input type="radio" name="delivery_type"
                                         value="opt3">Doprava s výnosem <span class="delivery-price">+ 1 999
                                         Kč</span></label>
                                 {%if no_cart_items == True %}
@@ -134,7 +135,7 @@
                         </div>
                         {%endif%}
                     </div>
-                    {%if nothing_selected == True %}
+                    {%if delivery_type != True %}
                     <div class="checkout-btn-unchecked">
                         <button>Zvolte způsob dopravy</button>
                     </div>
