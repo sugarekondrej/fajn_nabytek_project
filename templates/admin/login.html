@@ -21,7 +21,7 @@
 
 <body>
     <div id="loginform">
-        <form method="post" action="{% url 'id.views.auth' %}">
+        <form method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
             {{ form.username.label_tag }}<br />
@@ -30,7 +30,7 @@
             {{ form.password }}<br />
             {{ form.token.label_tag }}<br />
             {{ form.token }}<br />
-            <input type="submit" value="Log In" />
+            <input type="submit" value="Přihlásit se" />
         </form>
     </div>
 </body>
