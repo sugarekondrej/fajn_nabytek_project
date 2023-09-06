@@ -1,12 +1,14 @@
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from listings.models import Produkt
-from . models import Cart,CartItem
+from .models import Cart, CartItem
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 import logging
+
 logger = logging.getLogger(__name__)
 # Create your views here.
+
 
 def _cart_id(request):
     cart = request.session.session_key
@@ -14,25 +16,23 @@ def _cart_id(request):
         cart = request.session.create()
     return cart
 
-def cart(request,total = 0 ,quantity = 0, cart_items=None):
+
+def cart(request, total=0, quantity=0, cart_items=None):
     delivery_price = 0
-    nothing_selected = False
+    nothing_selected = True
     no_cart_items = False
     if request.method == "POST":
-        osobni = request.POST.get("osobni",False)
-        delivery_one = request.POST.get("delivery_one",False)
-        delivery_two = request.POST.get("delivery_two",False)
-        
-        if osobni:
+        delivery = request.POST.get("delivery_type", False)
+
+        if delivery.value == "osobni":
             delivery_price = 0
-        elif delivery_one:
+        elif delivery.value == "opt2":
             delivery_price = 1299
-        elif delivery_two:
+        elif delivery.value == "opt3":
             delivery_price = 1999
 
-        if osobni == False and delivery_one == False and delivery_two == False:
-            nothing_selected = True
-        
+        if delivery == True:
+            nothing_selected = False
 
     # even_total = 0"
     # if request.method == "POST":
@@ -42,26 +42,27 @@ def cart(request,total = 0 ,quantity = 0, cart_items=None):
     #     elif display_type == "opt3":
     #         even_total = 1999
     try:
-        cart = Cart.objects.get(cart_id= _cart_id(request))
+        cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
             quantity += cart_item.quantity
-            total += (cart_item.product.price * cart_item.quantity)
+            total += cart_item.product.price * cart_item.quantity
         if not cart_items:
             no_cart_items = True
     except ObjectDoesNotExist:
-        pass # Just ignore
+        pass  # Just ignore
     context = {
-        "total" : total + delivery_price,
-        "quantity" : quantity,
-        "cart_items" : cart_items,
+        "total": total + delivery_price,
+        "quantity": quantity,
+        "cart_items": cart_items,
         "delivery_price": delivery_price,
         "nothing_selected": nothing_selected,
         "no_cart_items": no_cart_items,
     }
-    return render(request,'cart/cart.html',context)
+    return render(request, "cart/cart.html", context)
 
-def checkout(request,total = 0 ,quantity = 0, cart_items=None):
+
+def checkout(request, total=0, quantity=0, cart_items=None):
     # even_total = 0
     # if request.method == "POST":
     #     display_type = request.POST.get("delivery_opt", None)
@@ -71,57 +72,60 @@ def checkout(request,total = 0 ,quantity = 0, cart_items=None):
     #         even_total = 1999
     delivery_price = 0
     try:
-        cart = Cart.objects.get(cart_id= _cart_id(request))
+        cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
         for cart_item in cart_items:
             quantity += cart_item.quantity
-            total += (cart_item.product.price * cart_item.quantity)
+            total += cart_item.product.price * cart_item.quantity
     except ObjectDoesNotExist:
-        pass # Just ignore
+        pass  # Just ignore
     context = {
-        "total" : total,
-        "quantity" : quantity,
-        "cart_items" : cart_items,
+        "total": total,
+        "quantity": quantity,
+        "cart_items": cart_items,
         "delivery_price": delivery_price,
     }
-    return render(request,'cart/checkout.html',context)
+    return render(request, "cart/checkout.html", context)
 
-def add_cart(request,product_id):
+
+def add_cart(request, product_id):
     product = Produkt.objects.get(id=product_id)
     try:
-        cart= Cart.objects.get(cart_id=_cart_id(request)) #get cart using session id
+        cart = Cart.objects.get(cart_id=_cart_id(request))  # get cart using session id
     except Cart.DoesNotExist:
         cart = Cart.objects.create(cart_id=_cart_id(request))
     cart.save()
 
     try:
-        cart_item = CartItem.objects.get(product=product,cart=cart)
+        cart_item = CartItem.objects.get(product=product, cart=cart)
         cart_item.quantity += 1
     except CartItem.DoesNotExist:
-        cart_item = CartItem.objects.create(product=product,quantity=1,cart=cart)
+        cart_item = CartItem.objects.create(product=product, quantity=1, cart=cart)
     cart_item.save()
-    return redirect('cart')
+    return redirect("cart")
     # exit()
     # return redirect('cart')
 
-def remove_cart(request,product_id):
+
+def remove_cart(request, product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
-    product = get_object_or_404(Produkt,id=product_id)
-    cart_item = CartItem.objects.get(cart=cart,product=product)
-    
-    if cart_item.quantity >1:
+    product = get_object_or_404(Produkt, id=product_id)
+    cart_item = CartItem.objects.get(cart=cart, product=product)
+
+    if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
     else:
         cart_item.delete()
-    
+
     return redirect("cart")
 
-def remove_product(request,product_id):
+
+def remove_product(request, product_id):
     cart = Cart.objects.get(cart_id=_cart_id(request))
-    product = get_object_or_404(Produkt,id=product_id)
-    cart_item = CartItem.objects.get(cart=cart,product=product)
-    
+    product = get_object_or_404(Produkt, id=product_id)
+    cart_item = CartItem.objects.get(cart=cart, product=product)
+
     cart_item.delete()
-    
+
     return redirect("cart")
