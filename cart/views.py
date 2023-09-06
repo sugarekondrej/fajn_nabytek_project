@@ -21,7 +21,6 @@ def cart(request, total=0, quantity=0, cart_items=None):
     delivery_price = 0
     nothing_selected = True
     no_cart_items = False
-    delivery = ""
     if request.method == "POST":
         delivery = request.POST.get("delivery_type", False)
 
@@ -32,7 +31,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
         elif delivery == "opt3":
             delivery_price = 1999
 
-        if delivery == "":
+        if delivery == None:
             nothing_selected = False
 
     # even_total = 0"
