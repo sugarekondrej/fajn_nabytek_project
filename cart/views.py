@@ -24,11 +24,11 @@ def cart(request, total=0, quantity=0, cart_items=None):
     if request.method == "POST":
         delivery = request.POST.get("delivery_type", False)
 
-        if delivery.value == "osobni":
+        if delivery == "osobni":
             delivery_price = 0
-        elif delivery.value == "opt2":
+        elif delivery == "opt2":
             delivery_price = 1299
-        elif delivery.value == "opt3":
+        elif delivery == "opt3":
             delivery_price = 1999
 
         if delivery == True:
