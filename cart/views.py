@@ -21,6 +21,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
     delivery_price = 0
     nothing_selected = True
     no_cart_items = False
+    delivery: str
     if request.method == "POST":
         delivery = request.POST.get("delivery_type", False)
 
