@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404,redirect
 from . import models
 from listings import urls
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.contrib.auth import authenticate, logout
 
 # listings = models.Produkt.objects.filter(typobjektu__name__startswith="Ča")
 # Create your views here.
@@ -125,5 +126,3 @@ def dev_spotrebice(request):
 def developerske_projekty(request):
 
      return render(request,'dev/developerske-projekty.html')
-
-

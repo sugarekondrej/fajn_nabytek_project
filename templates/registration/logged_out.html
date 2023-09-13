@@ -1,0 +1,8 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div class="logout">
+    <p>Odhlášen</p>
+    <a href="{% url 'admin:login'%}">Znovu se přihlásit</a>
+</div>
+{% endblock %}

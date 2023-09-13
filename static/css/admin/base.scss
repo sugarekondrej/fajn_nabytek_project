@@ -64,7 +64,6 @@ header {
 footer {
   display: block;
   position: absolute;
-  bottom: 0;
   clear: both;
   width: 100%;
   .trademark {
@@ -117,5 +116,20 @@ footer {
         text-transform: uppercase;
       }
     }
+  }
+}
+
+.logout {
+  font-size: x-large;
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 20px 40px;
+    margin: 20px;
+    background-color: black;
+    border-radius: 50px;
+  }
+  p {
+    margin-bottom: 50px;
   }
 }

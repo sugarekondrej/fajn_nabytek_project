@@ -63,7 +63,6 @@ header .header-wrap .info-section form button:hover {
 footer {
   display: block;
   position: absolute;
-  bottom: 0;
   clear: both;
   width: 100%;
 }
@@ -117,4 +116,19 @@ footer .trademark {
   color: #dd4040;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.logout {
+  font-size: x-large;
+}
+.logout a {
+  text-decoration: none;
+  color: white;
+  padding: 20px 40px;
+  margin: 20px;
+  background-color: black;
+  border-radius: 50px;
+}
+.logout p {
+  margin-bottom: 50px;
 }/*# sourceMappingURL=base.css.map */

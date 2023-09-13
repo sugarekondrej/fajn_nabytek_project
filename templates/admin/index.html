@@ -42,7 +42,7 @@
           {% if user.has_usable_password %}
           <a href="{% url 'admin:password_change' %}">Změna hesla</a> /
           {% endif %}
-          <form id="logout-form" method="post" action="{% url 'admin:logout' %}" onClick="refreshPage()">
+          <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
             {% csrf_token %}
             <button type="submit">Odhlásit</button>
           </form>
@@ -52,8 +52,8 @@
         {% endblock %}
       </div>
   </header>
-
   <div class="page-wrap">
+    {% block content %}
     <div class="tiles">
       <a href="#">
         <div class="tile-wrap">
@@ -92,6 +92,7 @@
         </div>
       </a>
     </div>
+    {% endblock content %}
   </div>
   <footer>
     <div class="trademark">
@@ -102,11 +103,6 @@
       </span>
     </div>
   </footer>
-  <script>
-    function refreshPage() {
-      window.location.reload();
-    } 
-  </script>
 </body>
 
 </html>
