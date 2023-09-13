@@ -1,0 +1,41 @@
+services:
+  mysql:
+    container_name: fajn-mysql
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: "dev-db"
+      MYSQL_ROOT_PASSWORD: "123+" # TODO: Change this
+      MYSQL_USER: "msql"
+      MYSQL_PASS: "123+"
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  web:
+    container_name: fajn-ecommerce-TEST
+    build: .
+    working_dir: /srv/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    volumes:
+      - .:/srv/app
+    user: 1000:1000
+    command: python manage-local.py runserver 0.0.0.0:3000
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: local-phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: 123+
+volumes:
+  db:
+    driver: local
