@@ -76,4 +76,45 @@ footer .trademark {
   font-size: 0.6rem;
   font-weight: 400;
   padding: 5px 0px 5px 0px;
+}
+
+.page-wrap {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-wrap .tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.page-wrap .tiles a {
+  color: #dd4040;
+  text-decoration: none;
+}
+.page-wrap .tiles a:hover {
+  color: white;
+  background-color: #dd4040;
+}
+.page-wrap .tiles a:hover i,
+.page-wrap .tiles a:hover p {
+  color: white;
+}
+.page-wrap .tiles .tile-wrap {
+  padding: 50px;
+  max-width: 300px;
+  box-shadow: 0px 2px 13px 6px rgba(0, 0, 0, 0.08);
+}
+.page-wrap .tiles .tile-wrap i {
+  font-size: 6rem;
+  color: #dd4040;
+}
+.page-wrap .tiles .tile-wrap p {
+  font-size: x-large;
+  color: #dd4040;
+  text-decoration: none;
+  text-transform: uppercase;
 }/*# sourceMappingURL=base.css.map */

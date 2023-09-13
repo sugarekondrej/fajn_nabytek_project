@@ -1,57 +1,55 @@
 {%load static%}
 <!DOCTYPE html>
 <html lang="cz">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{%static 'css/admin/login.css'%}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}" />
-    <link
-      rel="stylesheet"
-      href="/static/img/bootstrap-icons-1.10.1/bootstrap-icons.css"
-    />
-    <script src="/static/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Fajn ADMIN</title>
-  </head>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{%static 'css/admin/login.css'%}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}" />
+  <link rel="stylesheet" href="/static/img/bootstrap-icons-1.10.1/bootstrap-icons.css" />
+  <script src="/static/js/bootstrap.min.js"></script>
 
-  <body>
-    <header>
-      <div class="header-wrap">
-        <a href="https://fajn-nabytek.eu"><img src="/static/img/logo2.svg" alt="Fajn-logo" /></a>
-      </div>
-    </header>
-    <div id="loginform">
-        <div class="form-wrap">
-            <p class="form-top">Přihlášení</p>
-        <form method="post">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
-            <p>Uživatel:</p>
-            {{ form.username }}
-            <p>Heslo:</p>
-            {{ form.password }}
-            {{ form.token.label_tag }}
-            {{ form.token }}
-            <br>
-            <input type="submit" value="Přihlásit se" />
-        </form>
-        </div>
+  <title>Fajn ADMIN</title>
+</head>
+
+<body>
+  <header>
+    <div class="header-wrap">
+      <a href="https://fajn-nabytek.eu"><img src="/static/img/logo2.svg" alt="Fajn-logo" /></a>
     </div>
-    <footer>
-      </div>
-      <div class="trademark">
-        <span
-          >© FAJN nábytek 2020 -
-          <script>
-            document.write(new Date().getFullYear());
-          </script></span
-        >
-      </div>
-    </footer>
-  </body>
+  </header>
+  <div id="loginform">
+    <div class="form-wrap">
+      <p class="form-top">Přihlášení</p>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p>Uživatel:</p>
+        {{ form.username }}
+        <p>Heslo:</p>
+        {{ form.password }}
+        {{ form.token.label_tag }}
+        {{ form.token }}
+        <br>
+        <input type="submit" value="Přihlásit se" />
+      </form>
+    </div>
+  </div>
+  <footer>
+    </div>
+    <div class="trademark">
+      <span>© FAJN nábytek 2020 -
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+      </span>
+    </div>
+  </footer>
+</body>
+
 </html>
