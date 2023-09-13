@@ -78,6 +78,7 @@ footer {
         margin-bottom: 20px;
         &[type="text"],
         &[type="password"] {
+          padding: 10px 20px;
           border-bottom: solid 2px $red_color;
           text-align: center;
           &:focus-visible {
