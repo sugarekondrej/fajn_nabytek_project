@@ -1,0 +1,94 @@
+html {
+  height: 100vh;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  font-family: "Rubik", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  display: block;
+  max-height: 200px;
+  background-color: #dd4040;
+}
+header .header-wrap {
+  text-align: center;
+}
+header .header-wrap img {
+  max-width: 100px;
+  height: auto;
+}
+
+footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  clear: both;
+  width: 100%;
+}
+footer .trademark {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  font-size: 0.6rem;
+  font-weight: 400;
+  padding: 5px 0px 5px 0px;
+}
+
+#loginform {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -250px;
+}
+#loginform .form-wrap {
+  max-width: 500px;
+  display: block;
+  font-size: larger;
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.21);
+}
+#loginform .form-wrap .form-top {
+  padding: 20px 0px;
+  background-color: #dd4040;
+  color: white;
+}
+#loginform .form-wrap form {
+  display: block;
+}
+#loginform .form-wrap form p {
+  margin: 5px 0px;
+}
+#loginform .form-wrap form input {
+  border: none;
+  margin-bottom: 20px;
+}
+#loginform .form-wrap form input[type=text], #loginform .form-wrap form input[type=password] {
+  border-bottom: solid 2px #dd4040;
+  text-align: center;
+}
+#loginform .form-wrap form input[type=text]:focus-visible, #loginform .form-wrap form input[type=password]:focus-visible {
+  outline: none;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.4);
+}
+#loginform .form-wrap form input[type=submit] {
+  padding: 10px 20px;
+  margin: 10px;
+  min-width: 40%;
+  background-color: black;
+  color: white;
+  border: none;
+}/*# sourceMappingURL=login.css.map */
