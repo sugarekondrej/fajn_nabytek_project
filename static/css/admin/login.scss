@@ -97,6 +97,11 @@ footer {
         background-color: black;
         color: white;
         border: none;
+        border-radius: 25px;
+        &:hover {
+          background-color: $red_color;
+          color: white;
+        }
       }
     }
   }

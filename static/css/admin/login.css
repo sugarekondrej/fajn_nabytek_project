@@ -93,4 +93,9 @@ footer .trademark {
   background-color: black;
   color: white;
   border: none;
+  border-radius: 25px;
+}
+#loginform .form-wrap form input[type=submit]:hover {
+  background-color: #dd4040;
+  color: white;
 }/*# sourceMappingURL=login.css.map */

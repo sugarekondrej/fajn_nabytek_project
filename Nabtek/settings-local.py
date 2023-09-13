@@ -98,6 +98,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.total_count',
                 'listings.context_processors.sedaci_soupravy_links',
                 'listings.context_processors.obyvaci_steny_links',
                 'listings.context_processors.postele_links',

@@ -13,6 +13,19 @@ services:
     volumes:
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: local-phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: 123+
   web:
     container_name: fajn-ecommerce-TEST
     restart: always
@@ -27,17 +40,6 @@ services:
       - .:/srv/app
     user: 1000:1000
     command: python manage-local.py runserver 0.0.0.0:3000
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: local-phpmyadmin
-    restart: always
-    ports:
-      - 8081:80
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: 123+
 volumes:
   db:
     driver: local
