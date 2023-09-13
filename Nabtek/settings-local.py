@@ -62,6 +62,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'cart': {  # Specific logger for your app
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
         '': {  # Catch-all root logger
             'handlers': ['file'],
             'level': 'ERROR',
@@ -137,7 +142,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dev-db',
-        'USER': 'root',
+        'USER': 'msql',
         'PASSWORD': '123+', 
         'HOST': 'mysql',
         'PORT': '3306',

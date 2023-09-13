@@ -65,6 +65,7 @@ footer .trademark {
   padding: 20px 0px;
   background-color: #dd4040;
   color: white;
+  text-transform: uppercase;
 }
 #loginform .form-wrap form {
   display: block;

@@ -21,6 +21,7 @@ services:
       - "3000:3000"
     depends_on:
       - mysql
+      - phpmyadmin
     volumes:
       - .:/srv/app
     user: 1000:1000
