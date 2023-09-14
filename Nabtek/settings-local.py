@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'listings',
+    'apps',
     'rest_framework',
     'cart',
     'accounts'

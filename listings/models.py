@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.safestring import mark_safe
-from django.urls import reverse
+from django.urls import path,reverse,include
+from django.template.response import TemplateResponse
+from django.contrib import admin
 # Create your models here.
 
 

@@ -38,3 +38,4 @@ class Listing_variants(admin.ModelAdmin):
     list_display_links=("rozmery_sirka","rozmery_delka","barva")
 admin.site.register(Variants,Listing_variants)
 
+

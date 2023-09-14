@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from . import views
+from apps import views
 
 urlpatterns = [
-    path("admin/apps/new-order",views.new_order,name="new-order"),
+
 ]
