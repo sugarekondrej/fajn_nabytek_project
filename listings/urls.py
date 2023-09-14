@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from . import views
 from cart.views import cart, checkout
+
 urlpatterns = [
     path('',views.index,name="listings"),
     path('<slug:main_category_slug>/<slug:sub_category_slug>/', views.listings_view, name='products_by_category'),

@@ -107,4 +107,3 @@ class Produkt(models.Model):
     #     return mark_safe('<img src="{}" width="100" />'.format(self.primary_img.url))
     # admin_photo.short_description='Image'
     # admin_photo.allow_tags=True
-

@@ -1,5 +1,10 @@
 from django.contrib import admin
-from . models import Main_Category,Sub_Category,Sub_sub_Category,Produkt,Variants,Brand
+from . models import *
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.views.generic.detail import DetailView
+from django.http import HttpResponse
+from django.urls import path
+
 # Register your models here.
 
 
@@ -32,3 +37,4 @@ class Listing_variants(admin.ModelAdmin):
     list_display=("id","rozmery_sirka","rozmery_delka","barva")
     list_display_links=("rozmery_sirka","rozmery_delka","barva")
 admin.site.register(Variants,Listing_variants)
+

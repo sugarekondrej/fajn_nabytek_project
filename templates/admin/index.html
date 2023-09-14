@@ -20,8 +20,8 @@
 <body>
   <header>
     <div class="header-wrap">
-      <div class="img-wrap"><a href="https://fajn-nabytek.eu/admin"><img src="/static/img/logo2.svg"
-            alt="Fajn-logo" /></a></div>
+      <div class="img-wrap"><a href="{% url 'admin:index' %}"><img src=" /static/img/logo2.svg" alt="Fajn-logo" /></a>
+      </div>
 
       <div class="info-section">
         {% block usertools %}
@@ -55,7 +55,7 @@
   <div class="page-wrap">
     {% block content %}
     <div class="tiles">
-      <a href="#">
+      <a href="{% url 'admin:index' %}apps/new-order/">
         <div class="tile-wrap">
           <i class="bi bi-file-earmark-plus-fill"></i>
           <p>Nová objednávka</p>

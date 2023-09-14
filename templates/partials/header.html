@@ -1,27 +1,29 @@
 {%load static%}
 {%load space%}
 <div class="head">
-        <div class="row justify-content-center">
-          <div class="col-md-4">
-              <div class="info_div">
-                <span><i class="bi bi-envelope-plus-fill"></i><a href="mailto:info@fajn-nabytek.cz" target="_blank">info@fajn-nabytek.cz</a></span>
-                <span><i class="bi bi-telephone"></i><a href="tel:+420704737272" target="_blank">+420 704 737 272</a></span>
-              </div>
-            </div>
-            <div class="col-md-2">
-              <div class="headimg">
-                <a href="https://fajn-nabytek.eu/loznice/postele/" alt="FAJN Nábytek"><img src="{% static 'img/logo2.svg' %}" width=80 height=60></a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <form action="" class="search", method="GET">
-              <div class="searchbar_div">
-                <input type="text" placeholder="Hledat.." name="keyword">
-              </div>
-            </form>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="info_div">
+        <span><i class="bi bi-envelope-plus-fill"></i><a href="mailto:info@fajn-nabytek.cz"
+            target="_blank">info@fajn-nabytek.cz</a></span>
+        <span><i class="bi bi-telephone"></i><a href="tel:+420704737272" target="_blank">+420 704 737 272</a></span>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="headimg">
+        <a href="{{ site_url }}/loznice/postele/" alt="FAJN Nábytek"><img src="{% static 'img/logo2.svg' %}" width=80
+            height=60></a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <form action="" class="search" , method="GET">
+        <div class="searchbar_div">
+          <input type="text" placeholder="Hledat.." name="keyword">
         </div>
-          </div>
+      </form>
+    </div>
+  </div>
+</div>
 <!-- Navbar container-->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
@@ -32,32 +34,38 @@
       <ul class="navbar-nav nav-fill w-100">
         <li class="nav-item dropdown has-megamenu">
           <a class="nav-link dropdown-toggle" href="#">Obývací pokoj</a>
-            <div class="dropdown-menu megamenu" role="menu">
-              {%for i in obyvaci_pokoj%}
-              <div class="megamenu-card">
-                <a href="#"></a>
-                  <div class="header-category-card">
-                    <img src="{{i.img.url}}" width="130px" height="120px">
-                    <div class="header-category-card-small">
-                    <a href="{{i.get_url}}"><h5>{{i.name}}</h5></a>
-                    <div class="header-category-card-p">
-                      {%if forloop.first%}
-                      {%for link in sedaci_soupravy_links%}
-                      
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      
-                      {%endfor%}
-                      {%endif%}
-                      {%if forloop.counter == 2 %}
-                      {%for link in obyvaci_steny_links%}
-                      
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      
-                      {%endfor%}
-                      {%endif%}
-                    </div>
+          <div class="dropdown-menu megamenu" role="menu">
+            {%for i in obyvaci_pokoj%}
+            <div class="megamenu-card">
+              <a href="#"></a>
+              <div class="header-category-card">
+                <img src="{{i.img.url}}" width="130px" height="120px">
+                <div class="header-category-card-small">
+                  <a href="{{i.get_url}}">
+                    <h5>{{i.name}}</h5>
+                  </a>
+                  <div class="header-category-card-p">
+                    {%if forloop.first%}
+                    {%for link in sedaci_soupravy_links%}
+
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+
+                    {%endfor%}
+                    {%endif%}
+                    {%if forloop.counter == 2 %}
+                    {%for link in obyvaci_steny_links%}
+
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+
+                    {%endfor%}
+                    {%endif%}
                   </div>
                 </div>
+              </div>
             </div>
             {%endfor%}
           </div> <!-- dropdown-mega-menu.// -->
@@ -65,103 +73,121 @@
 
         <li class="nav-item dropdown has-megamenu">
           <a class="nav-link dropdown-toggle" href="#">Ložnice</a>
-            <div class="dropdown-menu megamenu" role="menu">
-              {%for i in loznice%}
-              <div class="megamenu-card">
-                <a href="#"></a>
-                  <div class="header-category-card">
-                    <img src="{{i.img.url}}" width="130px" height="120px">
-                    <div class="header-category-card-small">
-                    <a href="{{i.get_url}}"><h5>{{i.name}}</h5></a>
-                    <div class="header-category-card-p">
-                      {%if forloop.first%}
-                      {%for link in postele_links%}
-                      
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      
-                      {%endfor%}
-                      {%endif%}
-                    </div>
+          <div class="dropdown-menu megamenu" role="menu">
+            {%for i in loznice%}
+            <div class="megamenu-card">
+              <a href="#"></a>
+              <div class="header-category-card">
+                <img src="{{i.img.url}}" width="130px" height="120px">
+                <div class="header-category-card-small">
+                  <a href="{{i.get_url}}">
+                    <h5>{{i.name}}</h5>
+                  </a>
+                  <div class="header-category-card-p">
+                    {%if forloop.first%}
+                    {%for link in postele_links%}
+
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+
+                    {%endfor%}
+                    {%endif%}
                   </div>
                 </div>
+              </div>
             </div>
             {%endfor%}
           </div> <!-- dropdown-mega-menu.// -->
         </li>
         <li class="nav-item dropdown has-megamenu">
           <a class="nav-link dropdown-toggle" href="#">Kuchyně</a>
-            <div class="dropdown-menu megamenu" role="menu">
-              {%for i in kuchyne%}
-              <div class="megamenu-card">
-                <a href="#"></a>
-                  <div class="header-category-card">
-                    <img src="{{i.img.url}}" width="130px" height="120px">
-                    <div class="header-category-card-small">
-                    <a href="{{i.get_url}}"><h5>{{i.name}}</h5></a>
-                    <div class="header-category-card-p">
-                      {%if forloop.first%}
-                      {%for link in kuchynske_linky_links%}
-                      
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      
-                      {%endfor%}
-                      {%endif%}
-                      {%if forloop.counter == 2 %}
-                      {%for link in jidelni_stolky_links%}
-                      
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      
-                      {%endfor%}
-                      {%endif%}
-                      {%if forloop.counter == 3 %}
-                      {%for link in spotrebice_links%}
-                      
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      
-                      {%endfor%}
-                      {%endif%}
-                    </div>
+          <div class="dropdown-menu megamenu" role="menu">
+            {%for i in kuchyne%}
+            <div class="megamenu-card">
+              <a href="#"></a>
+              <div class="header-category-card">
+                <img src="{{i.img.url}}" width="130px" height="120px">
+                <div class="header-category-card-small">
+                  <a href="{{i.get_url}}">
+                    <h5>{{i.name}}</h5>
+                  </a>
+                  <div class="header-category-card-p">
+                    {%if forloop.first%}
+                    {%for link in kuchynske_linky_links%}
+
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+
+                    {%endfor%}
+                    {%endif%}
+                    {%if forloop.counter == 2 %}
+                    {%for link in jidelni_stolky_links%}
+
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+
+                    {%endfor%}
+                    {%endif%}
+                    {%if forloop.counter == 3 %}
+                    {%for link in spotrebice_links%}
+
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+
+                    {%endfor%}
+                    {%endif%}
                   </div>
                 </div>
+              </div>
             </div>
             {%endfor%}
           </div> <!-- dropdown-mega-menu.// -->
         </li>
         <li class="nav-item dropdown has-megamenu">
           <a class="nav-link dropdown-toggle" href="#">Dětský pokoj</a>
-            <div class="dropdown-menu megamenu" role="menu">
-              {%for i in detsky_pokoj%}
-              <div class="megamenu-card">
-                <a href="#"></a>
-                  <div class="header-category-card">
-                    <img src="{{i.img.url}}" width="130px" height="120px">
-                    <div class="header-category-card-small">
-                    <a href="{{i.get_url}}"><h5>{{i.name}}</h5></a>
-                    <div class="header-category-card-p">
-                      {%if forloop.first%}
-                      {%for link in postele%}
-                      <a href="{{ link.get_url2 }}"><p>{{link.name}}</p></a>
-                      {%endfor%}
-                      {%endif%}
-                    </div>
+          <div class="dropdown-menu megamenu" role="menu">
+            {%for i in detsky_pokoj%}
+            <div class="megamenu-card">
+              <a href="#"></a>
+              <div class="header-category-card">
+                <img src="{{i.img.url}}" width="130px" height="120px">
+                <div class="header-category-card-small">
+                  <a href="{{i.get_url}}">
+                    <h5>{{i.name}}</h5>
+                  </a>
+                  <div class="header-category-card-p">
+                    {%if forloop.first%}
+                    {%for link in postele%}
+                    <a href="{{ link.get_url2 }}">
+                      <p>{{link.name}}</p>
+                    </a>
+                    {%endfor%}
+                    {%endif%}
                   </div>
                 </div>
+              </div>
             </div>
             {%endfor%}
           </div> <!-- dropdown-mega-menu.// -->
         </li>
         <li class="nav-item dropdown has-megamenu">
           <a class="nav-link dropdown-toggle" href="#">Ostastní</a>
-            <div class="dropdown-menu megamenu" role="menu">
-              {%for i in ostatni%}
-              <div class="megamenu-card">
-                <a href="#"></a>
-                  <div class="header-category-card">
-                    <img src="{{i.img.url}}" width="130px" height="120px">
-                    <div class="header-category-card-small">
-                    <a href="{{i.get_url}}"><h5>{{i.name}}</h5></a>
-                  </div>
+          <div class="dropdown-menu megamenu" role="menu">
+            {%for i in ostatni%}
+            <div class="megamenu-card">
+              <a href="#"></a>
+              <div class="header-category-card">
+                <img src="{{i.img.url}}" width="130px" height="120px">
+                <div class="header-category-card-small">
+                  <a href="{{i.get_url}}">
+                    <h5>{{i.name}}</h5>
+                  </a>
                 </div>
+              </div>
             </div>
             {%endfor%}
           </div> <!-- dropdown-mega-menu.// -->
@@ -169,12 +195,13 @@
       </ul>
     </div> <!-- navbar-collapse.// -->
     <div class="cart-btn">
-      {% if total_count < 1 %}
-      <button><a href="https://fajn-nabytek.eu/kosik"><i class="bi bi-bag"></i>{{total_count}} Kč</a></button>
-      {%endif%}
-      {% if total_count > 1 %}
-      <button><a href="https://fajn-nabytek.eu/kosik"><i class="bi bi-bag"></i>{{total_count|spaced_format}} Kč</a></button>
-      {%endif%}
+      {% if total_count < 1 %} <button><a href="{{ site_url }}/kosik"><i class="bi bi-bag"></i>{{total_count}}
+          Kč</a></button>
+        {%endif%}
+        {% if total_count > 1 %}
+        <button><a href="{{ site_url }}/kosik"><i class="bi bi-bag"></i>{{total_count|spaced_format}}
+            Kč</a></button>
+        {%endif%}
     </div>
   </div> <!-- container-fluid.// -->
-  </nav>
+</nav>
