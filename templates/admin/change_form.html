@@ -1,0 +1,108 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{%static 'css/admin/base.css'%}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="{% static 'img/logo2.svg' %}" />
+  <link rel="stylesheet" href="/static/img/bootstrap-icons-1.11.0/bootstrap-icons.css">
+  <script src="/static/js/bootstrap.min.js"></script>
+
+  <title>Change FORM</title>
+</head>
+
+<body>
+  <header>
+    <div class="header-wrap">
+      <div class="img-wrap"><a href="{% url 'admin:index' %}"><img src=" /static/img/logo2.svg" alt="Fajn-logo" /></a>
+      </div>
+
+      <div class="info-section">
+        {% block usertools %}
+        {% if has_permission %}
+        <div id="user-tools">
+          <span>Přihlášený uživatel: </span>
+          <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+          {% block userlinks %}
+          {% if site_url %}
+          <a href="{{ site_url }}">Zpět do obchodu</a> /
+          {% endif %}
+          {% if user.is_active and user.is_staff %}
+          {% url 'django-admindocs-docroot' as docsroot %}
+          {% if docsroot %}
+          <a href="{{ docsroot }}">Dokumentace</a> /
+          {% endif %}
+          {% endif %}
+          {% if user.has_usable_password %}
+          <a href="{% url 'admin:password_change' %}">Změna hesla</a> /
+          {% endif %}
+          <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+            {% csrf_token %}
+            <button type="submit">Odhlásit</button>
+          </form>
+          {% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
+      </div>
+  </header>
+  <div class="page-wrap">
+    {% block content %}
+    <div class="tiles">
+      <a href="{% url 'admin:index' %}apps/neworder/">
+        <div class="tile-wrap">
+          <i class="bi bi-file-earmark-plus-fill"></i>
+          <p>Nová objednávka</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="tile-wrap">
+          <i class="bi bi-card-list"></i>
+          <p>Přehled objednávek</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="tile-wrap">
+          <i class="bi bi-truck"></i>
+          <p>Doprava</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="tile-wrap">
+          <i class="bi bi-plus-circle-fill"></i>
+          <p>Přidat produkt</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="tile-wrap">
+          <i class="bi bi-book-half"></i>
+          <p>Katalog produktů</p>
+        </div>
+      </a>
+      <a href="#">
+        <div class="tile-wrap">
+          <i class="bi bi-graph-up-arrow"></i>
+          <p>Statistiky</p>
+        </div>
+      </a>
+    </div>
+    {% endblock content %}
+  </div>
+  <footer>
+    <div class="trademark">
+      <span>© FAJN nábytek 2020 -
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+      </span>
+    </div>
+  </footer>
+</body>
+
+</html>
