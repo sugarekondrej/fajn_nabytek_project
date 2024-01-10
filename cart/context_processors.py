@@ -1,4 +1,4 @@
-from . models import Cart,CartItem
+from .models import Cart, CartItem
 from .views import _cart_id
 
 
@@ -11,7 +11,7 @@ def total_count(request):
             cart = Cart.objects.filter(cart_id=_cart_id(request))
             cart_items = CartItem.objects.all().filter(cart=cart[:1])
             for cart_item in cart_items:
-                total_count += (cart_item.product.price * cart_item.quantity)
+                total_count += cart_item.product.price * cart_item.quantity
         except Cart.DoesNotExist:
             total_count = 0
 

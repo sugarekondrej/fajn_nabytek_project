@@ -41,10 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'cart',
     'accounts'
-    # 'django_filters',
-    # 'bootstrapform',
-
-
 ]
 
 LOGGING = {
@@ -125,24 +121,14 @@ WSGI_APPLICATION = 'Nabtek.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'cmofajn_nabytekcz_2243',
-#         'USER': 'cmofajn_nabytekcz_2243',
-#         'PASSWORD': 'FajnAdmin123+', 
-#         'HOST': 'store5.rosti.cz',
-#         'PORT': '5432',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cmofajn__2306',
-        'USER': 'cmofajn__2306',
-        'PASSWORD': 'FajnAdmin123+', 
-        'HOST': 'store5.rosti.cz',
-        'PORT': '3306',
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT', default='', cast=int),
     }
 }
 
@@ -195,3 +181,10 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST = os.getenv('EMAIL_HOST', '')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '0'))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', '').lower() == 'true'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')

@@ -38,13 +38,6 @@ def cart(request, total=0, quantity=0, cart_items=None):
         if delivery_price > -1:
             nothing_selected = False
 
-    # even_total = 0"
-    # if request.method == "POST":
-    #     display_type = request.POST.get("delivery_opt", None)
-    #     if display_type == "opt2":
-    #         even_total = 1299
-    #     elif display_type == "opt3":
-    #         even_total = 1999
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
@@ -68,13 +61,6 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
 
 def checkout(request, total=0, quantity=0, cart_items=None):
-    # even_total = 0
-    # if request.method == "POST":
-    #     display_type = request.POST.get("delivery_opt", None)
-    #     if display_type == "opt2":
-    #         even_total = 1299
-    #     elif display_type == "opt3":
-    #         even_total = 1999
     delivery_price = 0
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -108,8 +94,6 @@ def add_cart(request, product_id):
         cart_item = CartItem.objects.create(product=product, quantity=1, cart=cart)
     cart_item.save()
     return redirect("cart")
-    # exit()
-    # return redirect('cart')
 
 
 def remove_cart(request, product_id):
